@@ -13,6 +13,8 @@
             <th scope="col">Colore</th>
             <th scope="col">Taglia</th>
             <th scope="col">Prezzo</th>
+            <th scope="col">Azioni</th>
+
           </tr>
         </thead>
         <tbody>
@@ -35,6 +37,9 @@
               <td>
                 {{ $dress->price }}
 
+              </td>
+              <td>
+                <a href="{{ route('dresses.show', ['dress' => $dress->id]) }}" class="btn btn-info">Dettagli</a>
               </td>
             </tr>
 
