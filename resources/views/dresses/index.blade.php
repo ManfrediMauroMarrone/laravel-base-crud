@@ -35,7 +35,7 @@
 
               </td>
               <td>
-                {{ $dress->price }}
+                € {{ $dress->price }}
 
               </td>
               <td>
@@ -47,6 +47,7 @@
         </tbody>
       </table>
 
+      <a href="{{ route('dresses.create') }}" class="btn btn-primary">Inserisci nuovo vestito</a>
 
       </div>
     </div>
