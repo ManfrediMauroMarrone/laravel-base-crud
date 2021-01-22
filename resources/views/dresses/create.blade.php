@@ -8,20 +8,27 @@
         <form method="POST" action="{{ route('dresses.store')}}">
           @csrf
           <div class="form-group">
-            <label for="exampleInputEmail1">Nome</label>
+            <label>Nome</label>
             <input type="text" name="name" class="form-control">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Colore</label>
+            <label>Colore</label>
             <input type="text" name="color" class="form-control">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Tessuto</label>
+            <label>Tessuto</label>
             <input type="text" name="fabric" class="form-control">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Taglia</label>
-            <input type="text" name="size" class="form-control">
+            <label>Taglia</label>
+            <select class="form-control" name="size">
+              <option value="">--seleziona--</option>
+              <option value="xs">XS</option>
+              <option value="s">S</option>
+              <option value="m">M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Prezzo</label>
