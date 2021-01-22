@@ -46,7 +46,7 @@ class DressController extends Controller
       $newDress->fill($data);
       $newDress->save();
 
-      return redirect()->route('dresses.create');
+      return redirect()->route('dresses.index');
 
     }
 
@@ -56,13 +56,14 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Dress $dress)
     {
-      $dress = Dress::find($id);
+      // SELECT * FROM dresses WHERE id = <$id>
+      // $dress = Dress::find($id);
 
       if ($dress) {
         $data = [
-          'dress' => Dress::find($id)
+          'dress' => $dress
         ];
         return view('dresses.show', $data);
       }
@@ -75,9 +76,15 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dress $dress)
     {
-        //
+      if ($dress) {
+        $data = [
+          'dress' => $dress
+        ];
+        return view('dresses.edit', $data);
+      }
+      abort(404);
     }
 
     /**
@@ -87,9 +94,12 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dress $dress)
     {
-        //
+      $data = $request->all();
+      $dress->update($data);
+
+      return redirect()->route('dresses.index');
     }
 
     /**
@@ -98,8 +108,9 @@ class DressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dress $dress)
     {
-        //
+      $dress->delete();
+      return redirect()->route('dresses.index');
     }
 }

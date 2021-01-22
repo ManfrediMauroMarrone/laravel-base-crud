@@ -40,6 +40,13 @@
               </td>
               <td>
                 <a href="{{ route('dresses.show', ['dress' => $dress->id]) }}" class="btn btn-info">Dettagli</a>
+                <a href="{{ route('dresses.edit', ['dress' => $dress->id]) }}" class="btn btn-warning">Modifica</a>
+                <form class="d-inline-block" action="{{ route('dresses.destroy', ['dress' => $dress->id]) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" name="button" class="btn btn-danger"> Cancella</button>
+
+                </form>
               </td>
             </tr>
 
